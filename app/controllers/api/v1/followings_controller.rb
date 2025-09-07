@@ -19,6 +19,7 @@ class Api::V1::FollowingsController < ApplicationController
     end
   end
 
+  # DELETE /api/v1/users/:user_id/followings
   def destroy
     target_user = User.find_by(id: params[:target_user_id])
     if target_user.nil?
@@ -34,6 +35,7 @@ class Api::V1::FollowingsController < ApplicationController
     end
   end
 
+  # GET /api/v1/users/:user_id/followings
   def index
     followings = @current_user.following_users
 
