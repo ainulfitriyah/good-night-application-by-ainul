@@ -1,4 +1,5 @@
 class Api::V1::MySleepRecordsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :define_current_user
   before_action :authorize_user
   # POST /api/v1/users/:user_id/my_sleep_records
