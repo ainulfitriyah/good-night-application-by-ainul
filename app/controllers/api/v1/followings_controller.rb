@@ -18,4 +18,19 @@ class Api::V1::FollowingsController < ApplicationController
       render json: { message: "Now following", following: true }, status: :created
     end
   end
+
+  def destroy
+    target_user = User.find_by(id: params[:target_user_id])
+    if target_user.nil?
+      render json: { error: "Target user not found" }, status: :not_found
+      return
+    end
+
+    if @current_user.following?(target_user)
+      @current_user.unfollow(target_user)
+      render json: { message: "Unfollowed", following: false }, status: :ok
+    else
+      render json: { message: "Not following", following: false }, status: :ok
+    end
+  end
 end
