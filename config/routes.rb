@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [ :index ] do
         resources :my_sleep_records, only: [ :create ]
-        resources :followings, only: [ :create ]
+        resources :followings, only: [ :create, :index ]
           delete "followings", to: "followings#destroy"
       end
     end
