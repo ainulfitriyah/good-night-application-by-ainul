@@ -51,4 +51,4 @@ bundle exec rspec
 ```
 
 # 📓 API Documentation
-    https://www.postman.com/lunar-module-geologist-95723284/good-night-app-by-ainul/collection/olqhrg3/good-night-app-by-ainul
+https://www.postman.com/lunar-module-geologist-95723284/good-night-app-by-ainul/collection/olqhrg3/good-night-app-by-ainul
