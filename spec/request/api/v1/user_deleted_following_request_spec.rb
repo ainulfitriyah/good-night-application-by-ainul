@@ -1,7 +1,6 @@
-# spec/requests/api/v1/followings_controller_spec.rb
 require 'rails_helper'
 
-RSpec.describe Api::V1::FollowingsController, type: :request do
+RSpec.describe 'Api::V1::MySleepRecords', type: :request do
   let(:user) { create(:user) }
   let(:target_user) { create(:user) }
 

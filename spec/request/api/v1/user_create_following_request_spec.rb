@@ -1,4 +1,3 @@
-# spec/requests/api/v1/followings_controller_spec.rb
 require 'rails_helper'
 
 RSpec.describe "Api::V1::Followings", type: :request do

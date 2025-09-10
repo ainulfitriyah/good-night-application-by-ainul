@@ -1,4 +1,3 @@
-# spec/requests/api/v1/my_sleep_records_controller_spec.rb
 require 'rails_helper'
 
 RSpec.describe "Api::V1::MySleepRecords", type: :request do
