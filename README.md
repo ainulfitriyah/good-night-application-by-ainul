@@ -18,3 +18,37 @@ This is a Ruby on Rails application that helps users track sleep patterns.
 - **Cache/Queue**: Redis
 - **Testing**: RSpec
 - **API Documentation**: Postman
+
+# 📦 Installation
+## 1. Clone the repository:
+   ```bash
+   git clone https://github.com/ainulfitriyah/good-night-application-by-ainul.git
+  ```
+## 2. Navigate to the project directory:
+   ```bash
+   cd good-night-application-by-ainul
+   ```
+## 3. Install dependencies:
+```bash
+   bundle install
+   ```
+## 4. Set up the database:
+   ```bash
+   rails db:create
+   rails db:migrate
+   ```
+## 5. Start the Rails server:
+```bash
+    rails server
+  ```
+## 6. Visit the application 
+Open your browser and navigate to http://localhost:3000
+
+# 🧪 Running Tests
+To run the test suite, use the following command:
+```bash
+bundle exec rspec
+```
+
+# 📓 API Documentation
+    https://www.postman.com/lunar-module-geologist-95723284/good-night-app-by-ainul/collection/olqhrg3/good-night-app-by-ainul
