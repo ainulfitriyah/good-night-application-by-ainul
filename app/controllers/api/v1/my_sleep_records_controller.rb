@@ -50,7 +50,7 @@ class Api::V1::MySleepRecordsController < ApplicationController
       ),
       page: page,
       per_page: per_page,
-      total_count: sleep_records.count
+      total_count: paginated.count
     }, status: :ok
   end
 end
