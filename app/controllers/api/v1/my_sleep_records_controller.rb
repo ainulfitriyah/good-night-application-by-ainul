@@ -28,4 +28,29 @@ class Api::V1::MySleepRecordsController < ApplicationController
       render json: { error: "Sleep record not found" }, status: :not_found
     end
   end
+
+  # GET /api/v1/users/:user_id/my_sleep_records
+  def index
+    sleep_records = @current_user.sleep_records
+    if params[:start_date].present? && params[:end_date].present?
+      start_date = Date.parse(params[:start_date]) rescue nil
+      end_date = Date.parse(params[:end_date]) rescue nil
+      if start_date && end_date
+        sleep_records = sleep_records.where(slept_at: start_date.beginning_of_day..end_date.end_of_day)
+      end
+    end
+    sleep_records = sleep_records.order(slept_at: :desc)
+    page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    per_page = params[:per_page].to_i > 0 ? params[:per_page].to_i : 20
+    paginated = sleep_records.offset((page - 1) * per_page).limit(per_page)
+    render json: {
+      sleep_records: ActiveModelSerializers::SerializableResource.new(
+        paginated,
+        each_serializer: SleepRecordSerializer
+      ),
+      page: page,
+      per_page: per_page,
+      total_count: sleep_records.count
+    }, status: :ok
+  end
 end
