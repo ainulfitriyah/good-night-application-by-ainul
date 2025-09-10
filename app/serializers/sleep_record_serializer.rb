@@ -19,6 +19,7 @@ class SleepRecordSerializer < ActiveModel::Serializer
   end
 
   def duration_hours
+    return nil unless object.duration_seconds.present?
     return nil unless object.woke_at.present?
     (object.duration_seconds / 1.hour).round(2)
   end
