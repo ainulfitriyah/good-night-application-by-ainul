@@ -18,4 +18,14 @@ class Api::V1::MySleepRecordsController < ApplicationController
       render json: { message: "Sleep record started", sleep_record: sleep_record }, status: :created
     end
   end
+
+  # GET /api/v1/users/:user_id/my_sleep_records/:id
+  def show
+    sleep_record = @current_user.sleep_records.find_by(id: params[:id])
+    if sleep_record
+      render json: sleep_record, status: :ok
+    else
+      render json: { error: "Sleep record not found" }, status: :not_found
+    end
+  end
 end
