@@ -12,10 +12,25 @@ class Api::V1::MySleepRecordsController < ApplicationController
       sleep_record_active.update(
         woke_at: date_now,
         duration_seconds: duration_seconds)
-      render json: { message: "Sleep record ended", sleep_record: sleep_record_active }, status: :ok
+
+      all_sleep_records = @current_user.sleep_records.order(slept_at: :desc)
+      render json: {
+        message: "Sleep record ended",
+        sleep_records: ActiveModelSerializers::SerializableResource.new(
+          all_sleep_records,
+          each_serializer: SleepRecordSerializer
+        )
+      }, status: :ok
     else
       sleep_record = @current_user.sleep_records.create(slept_at: DateTime.now)
-      render json: { message: "Sleep record started", sleep_record: sleep_record }, status: :created
+      all_sleep_records = @current_user.sleep_records.order(slept_at: :desc)
+      render json: {
+        message: "Sleep record started",
+        sleep_records: ActiveModelSerializers::SerializableResource.new(
+          all_sleep_records,
+          each_serializer: SleepRecordSerializer
+        )
+      }, status: :created
     end
   end
 
