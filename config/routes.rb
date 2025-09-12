@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         resources :my_sleep_records, only: [ :create, :show, :index ]
         resources :followings, only: [ :create, :index ]
           delete "followings", to: "followings#destroy"
+        resources :friends_sleep_records, only: [ :index ]
       end
     end
   end

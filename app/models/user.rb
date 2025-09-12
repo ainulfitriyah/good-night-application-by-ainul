@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :followers, class_name: "Follow", foreign_key: "followee_id", dependent: :destroy
 
   has_many :following_users, through: :followings, source: :followee
+  has_many :following_sleep_records, through: :following_users, source: :sleep_records
 
   def following?(target_user)
     followings.exists?(followee_id: target_user.id)
